@@ -480,6 +480,23 @@ head(activityCompleteData)</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc. I will use the mean for that 5 -minute interval to replace all the missing values in the dataset. At the end, I will check if all the NAs have been replaced.</li>
 </ol>
+<pre class="r"><code>replacewithmean &lt;- function(x) replace(x, is.na(x), mean(x, na.rm = TRUE))
+
+meanActivitydata &lt;- readActivityData%&gt;% group_by(interval) %&gt;% mutate(steps= replacewithmean(steps))
+
+head(meanActivitydata)</code></pre>
+<pre><code>## # A tibble: 6 x 3
+## # Groups:   interval [6]
+##    steps date       interval
+##    &lt;dbl&gt; &lt;chr&gt;         &lt;int&gt;
+## 1 1.72   2012-10-01        0
+## 2 0.340  2012-10-01        5
+## 3 0.132  2012-10-01       10
+## 4 0.151  2012-10-01       15
+## 5 0.0755 2012-10-01       20
+## 6 2.09   2012-10-01       25</code></pre>
+<pre class="r"><code>sum(is.na(meanActivitydata))</code></pre>
+<pre><code>## [1] 0</code></pre>
 </div>
 <div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level2">
 <h2>Are there differences in activity patterns between weekdays and weekends?</h2>

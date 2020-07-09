@@ -221,4 +221,34 @@ sapply(X = readActivityData, FUN = function(x) sum(is.na(x)))
 2. Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc. I will use the mean for that 5 -minute interval to replace all the missing values in the dataset. At the end, I will check if all the NAs have been replaced.
 
 
+```r
+replacewithmean <- function(x) replace(x, is.na(x), mean(x, na.rm = TRUE))
+
+meanActivitydata <- readActivityData%>% group_by(interval) %>% mutate(steps= replacewithmean(steps))
+
+head(meanActivitydata)
+```
+
+```
+## # A tibble: 6 x 3
+## # Groups:   interval [6]
+##    steps date       interval
+##    <dbl> <chr>         <int>
+## 1 1.72   2012-10-01        0
+## 2 0.340  2012-10-01        5
+## 3 0.132  2012-10-01       10
+## 4 0.151  2012-10-01       15
+## 5 0.0755 2012-10-01       20
+## 6 2.09   2012-10-01       25
+```
+
+
+```r
+sum(is.na(meanActivitydata))
+```
+
+```
+## [1] 0
+```
+
 ## Are there differences in activity patterns between weekdays and weekends?
