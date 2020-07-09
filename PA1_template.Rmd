@@ -46,12 +46,49 @@ head(activityCompleteData)
 
 ## What is mean total number of steps taken per day?
 
+Here we can split this up into 2 parts: 
+1) We find the total number of steps. 
+2) We find the mean of the total number of steps
 
+```{r}
+
+library(dplyr)
+
+totalSteps <- activityCompleteData %>% select(date, steps) %>% group_by(date) %>% summarize(tsteps= sum(steps))
+hist(totalSteps$tsteps, xlab = "Total steps taken daily", ylab = "Count of the number of steps", main="Histogram of Total no of Steps by day", breaks = 20, col = "#FF8509" )
+
+```
+
+Now to calculate the mean of the steps
+
+```{r}
+
+mean(totalSteps$tsteps)
+
+
+```
+Median of the steps
+```{r}
+
+median(totalSteps$tsteps)
+
+```
 
 ## What is the average daily activity pattern?
 
+Time series plot of the 5-minute interval is as below
 
+```{r}
 
+library(ggplot2)
+
+head(activityCompleteData)
+
+five_min_interval <- activityCompleteData %>% select(interval, steps) %>% na.omit() %>% group_by(interval) %>% summarize(tsteps= mean(steps)) 
+  
+ggplot(five_min_interval, aes(x=interval, y=tsteps))+ geom_line()
+
+```
 ## Imputing missing values
 
 

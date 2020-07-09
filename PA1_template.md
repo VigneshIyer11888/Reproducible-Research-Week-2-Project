@@ -57,15 +57,121 @@ head(readActivityData)
 ## 5    NA 2012-10-01       20
 ## 6    NA 2012-10-01       25
 ```
+Omitting the null values in the data and saving it to a new Variable
+
+
+```r
+activityCompleteData <- na.omit(readActivityData)
+
+head(activityCompleteData)
+```
+
+```
+##     steps       date interval
+## 289     0 2012-10-02        0
+## 290     0 2012-10-02        5
+## 291     0 2012-10-02       10
+## 292     0 2012-10-02       15
+## 293     0 2012-10-02       20
+## 294     0 2012-10-02       25
+```
 
 ## What is mean total number of steps taken per day?
 
+Here we can split this up into 2 parts: 
+1) We find the total number of steps. 
+2) We find the mean of the total number of steps
 
+
+```r
+library(dplyr)
+```
+
+```
+## 
+## Attaching package: 'dplyr'
+```
+
+```
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+```
+
+```
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+```
+
+```r
+totalSteps <- activityCompleteData %>% select(date, steps) %>% group_by(date) %>% summarize(tsteps= sum(steps))
+```
+
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+```r
+hist(totalSteps$tsteps, xlab = "Total steps taken daily", ylab = "Count of the number of steps", main="Histogram of Total no of Steps by day", breaks = 20, col = "#FF8509" )
+```
+
+![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+
+Now to calculate the mean of the steps
+
+
+```r
+mean(totalSteps$tsteps)
+```
+
+```
+## [1] 10766.19
+```
+Median of the steps
+
+```r
+median(totalSteps$tsteps)
+```
+
+```
+## [1] 10765
+```
 
 ## What is the average daily activity pattern?
 
+Time series plot of the 5-minute interval is as below
 
 
+```r
+library(ggplot2)
+
+head(activityCompleteData)
+```
+
+```
+##     steps       date interval
+## 289     0 2012-10-02        0
+## 290     0 2012-10-02        5
+## 291     0 2012-10-02       10
+## 292     0 2012-10-02       15
+## 293     0 2012-10-02       20
+## 294     0 2012-10-02       25
+```
+
+```r
+five_min_interval <- activityCompleteData %>% select(interval, steps) %>% na.omit() %>% group_by(interval) %>% summarize(tsteps= mean(steps)) 
+```
+
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+```r
+ggplot(five_min_interval, aes(x=interval, y=tsteps))+ geom_line()
+```
+
+![](PA1_template_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 ## Imputing missing values
 
 
