@@ -10,7 +10,8 @@ output:
 
 We are going to load, extract and read the data from the dataset [Activity monitoring data](https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip)
 
-```{r}
+
+```r
 # This section deals with the downloading the compressed file and
 # extracting it contents.
 
@@ -19,18 +20,27 @@ dataFile <- "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip
 download.file(dataFile, destfile = "./activity.zip")
 
 unzip(zipfile = "./activity.zip", exdir = "./activity")
-
 ```
 
 The above step is an one time operation, verify if the folder and its contents have been extracted to the appropriate location  once done.
 
 Reading the contents of the uncompressed folder.
-```{r}
+
+```r
 # Reading the contents of the file
 readActivityData <- read.csv("../activity/activity.csv")
 
 head(readActivityData)
+```
 
+```
+##   steps       date interval
+## 1    NA 2012-10-01        0
+## 2    NA 2012-10-01        5
+## 3    NA 2012-10-01       10
+## 4    NA 2012-10-01       15
+## 5    NA 2012-10-01       20
+## 6    NA 2012-10-01       25
 ```
 
 ## What is mean total number of steps taken per day?
