@@ -59,6 +59,7 @@ totalSteps <- activityCompleteData %>% select(date, steps) %>% group_by(date) %>
 hist1 <- hist(totalSteps$tsteps, xlab = "Total steps taken daily", ylab = "Count of the number of steps", main="Histogram of Total no of Steps by day", breaks = 20, col = "#FF8509" )
 
 ```
+
 Now to calculate the mean of the steps
 
 ```{r}

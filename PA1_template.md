@@ -117,6 +117,7 @@ hist1 <- hist(totalSteps$tsteps, xlab = "Total steps taken daily", ylab = "Count
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+
 Now to calculate the mean of the steps
 
 
