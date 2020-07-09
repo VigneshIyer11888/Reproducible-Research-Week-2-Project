@@ -158,5 +158,11 @@ print(hist2)
 Compare the mean and median of Old and New data
 ```{r}
 oldActivitymean <- mean(totalSteps$tsteps, na.rm = TRUE)
-
+oldActivitymean
+newActivitymean <- mean(newActivitysteps$Total)
+newActivitymean
+oldActivitymedian <- median(totalSteps$tsteps, na.rm = TRUE)
+oldActivitymedian
+newActivitymedian <- median(newActivitysteps$Total)
+newActivitymedian
 ```

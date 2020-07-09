@@ -534,7 +534,18 @@ print(hist2)</code></pre>
 <div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level2">
 <h2>Are there differences in activity patterns between weekdays and weekends?</h2>
 <p>Compare the mean and median of Old and New data</p>
-<pre class="r"><code>oldActivitymean &lt;- mean(totalSteps$tsteps, na.rm = TRUE)</code></pre>
+<pre class="r"><code>oldActivitymean &lt;- mean(totalSteps$tsteps, na.rm = TRUE)
+oldActivitymean</code></pre>
+<pre><code>## [1] 10766.19</code></pre>
+<pre class="r"><code>newActivitymean &lt;- mean(newActivitysteps$Total)
+newActivitymean</code></pre>
+<pre><code>## [1] 10766.19</code></pre>
+<pre class="r"><code>oldActivitymedian &lt;- median(totalSteps$tsteps, na.rm = TRUE)
+oldActivitymedian</code></pre>
+<pre><code>## [1] 10765</code></pre>
+<pre class="r"><code>newActivitymedian &lt;- median(newActivitysteps$Total)
+newActivitymedian</code></pre>
+<pre><code>## [1] 10766.19</code></pre>
 </div>
 
 

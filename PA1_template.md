@@ -304,4 +304,36 @@ Compare the mean and median of Old and New data
 
 ```r
 oldActivitymean <- mean(totalSteps$tsteps, na.rm = TRUE)
+oldActivitymean
+```
+
+```
+## [1] 10766.19
+```
+
+```r
+newActivitymean <- mean(newActivitysteps$Total)
+newActivitymean
+```
+
+```
+## [1] 10766.19
+```
+
+```r
+oldActivitymedian <- median(totalSteps$tsteps, na.rm = TRUE)
+oldActivitymedian
+```
+
+```
+## [1] 10765
+```
+
+```r
+newActivitymedian <- median(newActivitysteps$Total)
+newActivitymedian
+```
+
+```
+## [1] 10766.19
 ```
