@@ -34,6 +34,15 @@ summary(readActivityData)
 head(readActivityData)
 
 ```
+Omitting the null values in the data and saving it to a new Variable
+
+```{r}
+
+activityCompleteData <- na.omit(readActivityData)
+
+head(activityCompleteData)
+
+```
 
 ## What is mean total number of steps taken per day?
 
