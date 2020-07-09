@@ -215,9 +215,9 @@ sapply(X = readActivityData, FUN = function(x) sum(is.na(x)))
 
 
 ```r
-replacewithmean <- function(x) replace(x, is.na(x), mean(x, na.rm = TRUE))
+replaceWithActivitymean <- function(x) replace(x, is.na(x), mean(x, na.rm = TRUE))
 
-meanActivitydata <- readActivityData%>% group_by(interval) %>% mutate(steps= replacewithmean(steps))
+meanActivitydata <- readActivityData%>% group_by(interval) %>% mutate(steps= replaceWithActivitymean(steps))
 
 head(meanActivitydata)
 ```
