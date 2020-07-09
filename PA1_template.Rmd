@@ -29,6 +29,8 @@ Reading the contents of the uncompressed folder.
 # Reading the contents of the file
 readActivityData <- read.csv("../activity/activity.csv")
 
+summary(readActivityData)
+
 head(readActivityData)
 
 ```
