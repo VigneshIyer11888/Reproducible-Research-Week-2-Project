@@ -189,8 +189,36 @@ head(five_min_interval)
 ## 5       20 0.0755
 ## 6       25 2.09
 ```
+
+Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
+
+
+```r
+five_min_interval[which(five_min_interval$tsteps== max(five_min_interval$tsteps)),]
+```
+
+```
+## # A tibble: 1 x 2
+##   interval tsteps
+##      <int>  <dbl>
+## 1      835   206.
+```
 ## Imputing missing values
 
+Note that there are a number of days/intervals where there are missing values (coded as 𝙽𝙰). The presence of missing days may introduce bias into some calculations or summaries of the data.
+
+1. Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with 𝙽𝙰s)
+
+
+```r
+sapply(X = readActivityData, FUN = function(x) sum(is.na(x)))
+```
+
+```
+##    steps     date interval 
+##     2304        0        0
+```
+2. Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc. I will use the mean for that 5 -minute interval to replace all the missing values in the dataset. At the end, I will check if all the NAs have been replaced.
 
 
 ## Are there differences in activity patterns between weekdays and weekends?

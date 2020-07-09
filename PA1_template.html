@@ -461,9 +461,25 @@ head(activityCompleteData)</code></pre>
 ## 4       15 0.151 
 ## 5       20 0.0755
 ## 6       25 2.09</code></pre>
+<p>Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?</p>
+<pre class="r"><code>five_min_interval[which(five_min_interval$tsteps== max(five_min_interval$tsteps)),]</code></pre>
+<pre><code>## # A tibble: 1 x 2
+##   interval tsteps
+##      &lt;int&gt;  &lt;dbl&gt;
+## 1      835   206.</code></pre>
 </div>
 <div id="imputing-missing-values" class="section level2">
 <h2>Imputing missing values</h2>
+<p>Note that there are a number of days/intervals where there are missing values (coded as 𝙽𝙰). The presence of missing days may introduce bias into some calculations or summaries of the data.</p>
+<ol style="list-style-type: decimal">
+<li>Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with 𝙽𝙰s)</li>
+</ol>
+<pre class="r"><code>sapply(X = readActivityData, FUN = function(x) sum(is.na(x)))</code></pre>
+<pre><code>##    steps     date interval 
+##     2304        0        0</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc. I will use the mean for that 5 -minute interval to replace all the missing values in the dataset. At the end, I will check if all the NAs have been replaced.</li>
+</ol>
 </div>
 <div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level2">
 <h2>Are there differences in activity patterns between weekdays and weekends?</h2>
