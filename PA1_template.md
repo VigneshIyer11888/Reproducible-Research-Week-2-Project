@@ -117,40 +117,6 @@ hist1 <- hist(totalSteps$tsteps, xlab = "Total steps taken daily", ylab = "Count
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
-
-```r
-hist1
-```
-
-```
-## $breaks
-##  [1]     0  1000  2000  3000  4000  5000  6000  7000  8000  9000 10000 11000
-## [13] 12000 13000 14000 15000 16000 17000 18000 19000 20000 21000 22000
-## 
-## $counts
-##  [1]  2  0  1  1  1  2  1  2  5  2 10  6  6  4  2  5  0  1  0  0  1  1
-## 
-## $density
-##  [1] 3.773585e-05 0.000000e+00 1.886792e-05 1.886792e-05 1.886792e-05
-##  [6] 3.773585e-05 1.886792e-05 3.773585e-05 9.433962e-05 3.773585e-05
-## [11] 1.886792e-04 1.132075e-04 1.132075e-04 7.547170e-05 3.773585e-05
-## [16] 9.433962e-05 0.000000e+00 1.886792e-05 0.000000e+00 0.000000e+00
-## [21] 1.886792e-05 1.886792e-05
-## 
-## $mids
-##  [1]   500  1500  2500  3500  4500  5500  6500  7500  8500  9500 10500 11500
-## [13] 12500 13500 14500 15500 16500 17500 18500 19500 20500 21500
-## 
-## $xname
-## [1] "totalSteps$tsteps"
-## 
-## $equidist
-## [1] TRUE
-## 
-## attr(,"class")
-## [1] "histogram"
-```
-
 Now to calculate the mean of the steps
 
 
@@ -333,3 +299,5 @@ print(hist2)
 ![](PA1_template_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
 
 ## Are there differences in activity patterns between weekdays and weekends?
+
+
