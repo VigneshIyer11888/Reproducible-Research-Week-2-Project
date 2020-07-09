@@ -250,5 +250,23 @@ sum(is.na(meanActivitydata))
 ```
 ## [1] 0
 ```
+3. Create a new dataset that is equal to the original dataset but with the missing data filled in.
+
+
+```r
+newActivitydataset <- as.data.frame(meanActivitydata)
+head(newActivitydataset)
+```
+
+```
+##       steps       date interval
+## 1 1.7169811 2012-10-01        0
+## 2 0.3396226 2012-10-01        5
+## 3 0.1320755 2012-10-01       10
+## 4 0.1509434 2012-10-01       15
+## 5 0.0754717 2012-10-01       20
+## 6 2.0943396 2012-10-01       25
+```
+
 
 ## Are there differences in activity patterns between weekdays and weekends?
