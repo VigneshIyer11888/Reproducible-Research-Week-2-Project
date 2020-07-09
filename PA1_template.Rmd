@@ -152,9 +152,6 @@ hist2 <- ggplot(data = newActivitysteps, aes(Total)) +
 print(hist2)
 
 ```
-
-## Are there differences in activity patterns between weekdays and weekends?
-
 Compare the mean and median of Old and New data
 ```{r}
 oldActivitymean <- mean(totalSteps$tsteps, na.rm = TRUE)
@@ -165,4 +162,21 @@ oldActivitymedian <- median(totalSteps$tsteps, na.rm = TRUE)
 oldActivitymedian
 newActivitymedian <- median(newActivitysteps$Total)
 newActivitymedian
+```
+
+## Are there differences in activity patterns between weekdays and weekends?
+
+```{r}
+meanActivitydata$date <- as.Date(meanActivitydata$date)
+meanActivitydata$weekday <- weekdays(meanActivitydata$date)
+meanActivitydata$weekend <- ifelse(meanActivitydata$weekday=="Saturday" | meanActivitydata$weekday=="Sunday", "Weekend", "Weekday" )
+
+library(ggplot2)
+meandataweekendweekday <- aggregate(meanActivitydata$steps , by= list(meanActivitydata$weekend, meanActivitydata$interval), na.omit(mean))
+names(meandataweekendweekday) <- c("weekend", "interval", "steps")
+
+ggplot(meandataweekendweekday, aes(x=interval, y=steps, color=weekend)) + geom_line()+
+facet_grid(weekend ~.) + xlab("Interval") + ylab("Mean of Steps") +
+    ggtitle("Comparison of Average Number of Steps in Each Interval")
+
 ```
