@@ -114,5 +114,12 @@ sapply(X = readActivityData, FUN = function(x) sum(is.na(x)))
 
 ```{r}
 
+replacewithmean <- function(x) replace(x, is.na(x), mean(x, na.rm = TRUE))
+
+meanActivitydata <- readActivityData%>% group_by(interval) %>% mutate(steps= replacewithmean(steps))
+
+head(meanActivitydata)
+
+
 ```
 ## Are there differences in activity patterns between weekdays and weekends?
