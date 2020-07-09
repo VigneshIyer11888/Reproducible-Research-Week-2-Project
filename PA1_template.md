@@ -1,4 +1,10 @@
-# Reproducible Research: Peer Assessment 1
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: 
+  html_document:
+    keep_md: true
+---
+
 
 ## Loading and preprocessing the data
 
@@ -215,9 +221,9 @@ sapply(X = readActivityData, FUN = function(x) sum(is.na(x)))
 
 
 ```r
-replacewithmean <- function(x) replace(x, is.na(x), mean(x, na.rm = TRUE))
+replaceWithActivitymean <- function(x) replace(x, is.na(x), mean(x, na.rm = TRUE))
 
-meanActivitydata <- readActivityData%>% group_by(interval) %>% mutate(steps= replacewithmean(steps))
+meanActivitydata <- readActivityData%>% group_by(interval) %>% mutate(steps= replaceWithActivitymean(steps))
 
 head(meanActivitydata)
 ```
@@ -297,17 +303,5 @@ print(hist2)
 Compare the mean and median of Old and New data
 
 ```r
-library(grid)
-library(gridExtra)
-```
-
-```
-## 
-## Attaching package: 'gridExtra'
-```
-
-```
-## The following object is masked from 'package:dplyr':
-## 
-##     combine
+oldActivitymean <- mean(totalSteps$tsteps, na.rm = TRUE)
 ```

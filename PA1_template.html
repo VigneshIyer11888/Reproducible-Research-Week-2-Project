@@ -479,9 +479,9 @@ head(activityCompleteData)</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc. I will use the mean for that 5 -minute interval to replace all the missing values in the dataset. At the end, I will check if all the NAs have been replaced.</li>
 </ol>
-<pre class="r"><code>replacewithmean &lt;- function(x) replace(x, is.na(x), mean(x, na.rm = TRUE))
+<pre class="r"><code>replaceWithActivitymean &lt;- function(x) replace(x, is.na(x), mean(x, na.rm = TRUE))
 
-meanActivitydata &lt;- readActivityData%&gt;% group_by(interval) %&gt;% mutate(steps= replacewithmean(steps))
+meanActivitydata &lt;- readActivityData%&gt;% group_by(interval) %&gt;% mutate(steps= replaceWithActivitymean(steps))
 
 head(meanActivitydata)</code></pre>
 <pre><code>## # A tibble: 6 x 3
@@ -534,13 +534,7 @@ print(hist2)</code></pre>
 <div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level2">
 <h2>Are there differences in activity patterns between weekdays and weekends?</h2>
 <p>Compare the mean and median of Old and New data</p>
-<pre class="r"><code>library(grid)
-library(gridExtra)</code></pre>
-<pre><code>## 
-## Attaching package: &#39;gridExtra&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
-## 
-##     combine</code></pre>
+<pre class="r"><code>oldActivitymean &lt;- mean(totalSteps$tsteps, na.rm = TRUE)</code></pre>
 </div>
 
 

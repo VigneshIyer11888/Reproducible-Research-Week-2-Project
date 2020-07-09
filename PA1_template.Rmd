@@ -157,8 +157,6 @@ print(hist2)
 
 Compare the mean and median of Old and New data
 ```{r}
-library(grid)
-library(gridExtra)
-
+oldActivitymean <- mean(totalSteps$tsteps, na.rm = TRUE)
 
 ```
