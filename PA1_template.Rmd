@@ -55,8 +55,10 @@ Here we can split this up into 2 parts:
 library(dplyr)
 
 totalSteps <- activityCompleteData %>% select(date, steps) %>% group_by(date) %>% summarize(tsteps= sum(steps))
-hist(totalSteps$tsteps, xlab = "Total steps taken daily", ylab = "Count of the number of steps", main="Histogram of Total no of Steps by day", breaks = 20, col = "#FF8509" )
 
+hist1 <- hist(totalSteps$tsteps, xlab = "Total steps taken daily", ylab = "Count of the number of steps", main="Histogram of Total no of Steps by day", breaks = 20, col = "#FF8509" )
+
+print(hist1)
 ```
 
 Now to calculate the mean of the steps
@@ -141,14 +143,14 @@ summary(newActivitydataset)
 4. Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps? We make a histogram of the total number of steps taken each day first by using the new version dataset
 ```{r}
 library(ggplot2)
-new_steps <- aggregate(newActivitydataset$steps, by = list(newActivitydataset$date), FUN = sum)
-names(new_steps)[names(new_steps) == "x"] <- "Total"
-names(new_steps)[names(new_steps) == "Group.1"] <- "Date"
-hist2 <- ggplot(data = new_steps, aes(Total)) + 
+newActivitysteps <- aggregate(newActivitydataset$steps, by = list(newActivitydataset$date), FUN = sum)
+names(newActivitysteps)[names(newActivitysteps) == "x"] <- "Total"
+names(newActivitysteps)[names(newActivitysteps) == "Group.1"] <- "Date"
+hist2 <- ggplot(data = newActivitysteps, aes(Total)) + 
     geom_histogram(binwidth = 1500, colour = "#FF7864") +
     xlab("Total Number of Steps Taken Each Day") +
     ylab("Count") +
-    ggtitle("Histogram of the Total Number of Steps Taken Each Day with New Version Dataset")
+    ggtitle("Histogram of the Total Number of Steps Taken Each Day with New Dataset")
 print(hist2)
 
 ```
