@@ -289,7 +289,7 @@ newActivitysteps <- aggregate(newActivitydataset$steps, by = list(newActivitydat
 names(newActivitysteps)[names(newActivitysteps) == "x"] <- "Total"
 names(newActivitysteps)[names(newActivitysteps) == "Group.1"] <- "Date"
 hist2 <- ggplot(data = newActivitysteps, aes(Total)) + 
-    geom_histogram(binwidth = 1500, colour = "#FF7864") +
+    geom_histogram(binwidth = 1500, colour = "#000000", fill = "#FF8509") +
     xlab("Total Number of Steps Taken Each Day") +
     ylab("Count") +
     ggtitle("Histogram of the Total Number of Steps Taken Each Day with New Dataset")
@@ -300,4 +300,20 @@ print(hist2)
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
+Compare the mean and median of Old and New data
 
+```r
+library(grid)
+library(gridExtra)
+```
+
+```
+## 
+## Attaching package: 'gridExtra'
+```
+
+```
+## The following object is masked from 'package:dplyr':
+## 
+##     combine
+```
