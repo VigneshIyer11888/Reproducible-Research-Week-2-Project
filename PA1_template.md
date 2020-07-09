@@ -172,6 +172,23 @@ ggplot(five_min_interval, aes(x=interval, y=tsteps))+ geom_line()
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+
+
+```r
+head(five_min_interval)
+```
+
+```
+## # A tibble: 6 x 2
+##   interval tsteps
+##      <int>  <dbl>
+## 1        0 1.72  
+## 2        5 0.340 
+## 3       10 0.132 
+## 4       15 0.151 
+## 5       20 0.0755
+## 6       25 2.09
+```
 ## Imputing missing values
 
 

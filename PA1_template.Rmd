@@ -89,6 +89,10 @@ five_min_interval <- activityCompleteData %>% select(interval, steps) %>% na.omi
 ggplot(five_min_interval, aes(x=interval, y=tsteps))+ geom_line()
 
 ```
+
+```{r}
+head(five_min_interval)
+```
 ## Imputing missing values
 
 
